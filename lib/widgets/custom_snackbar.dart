@@ -19,7 +19,7 @@ void customSnackbar(
                 ? Colors.red
                 : isWarning
                     ? Colors.amber
-                    : const Color(0xffEE7D42),
+                    : const Color(0xffFFC8AB),
         duration: showLoading
             ? const Duration(minutes: 30)
             : const Duration(seconds: 4),

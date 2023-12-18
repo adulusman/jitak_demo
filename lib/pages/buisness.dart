@@ -14,7 +14,7 @@ class _BuisnessState extends State<Buisness> {
       appBar: AppBar(
         title: const Text('Buisness'),
       ),
-      body: const Center(child: Text('Buisness')),
+      body: const Center(child: Text('Buisness メンテナンス中')),
     );
   }
 }

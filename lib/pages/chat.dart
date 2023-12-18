@@ -14,7 +14,7 @@ class _ChatState extends State<Chat> {
       appBar: AppBar(
         title: const Text('Chat'),
       ),
-      body: const Center(child: Text('Chat')),
+      body: const Center(child: Text('Chat メンテナンス中')),
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jitak_non_getex/pages/stamp_card.dart';
+import 'package:jitak_non_getex/widgets/custom_snackbar.dart';
 import 'package:svg_flutter/svg.dart';
 
 class SearchPage extends StatefulWidget {
@@ -30,11 +31,19 @@ class _SearchPageState extends State<SearchPage> {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset('assets/Filter_icon.svg'),
+            child: GestureDetector(
+                onTap: () {
+                  customSnackbar(context, '近日公開...');
+                },
+                child: SvgPicture.asset('assets/Filter_icon.svg')),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SvgPicture.asset('assets/Vector.svg'),
+            child: GestureDetector(
+                onTap: () {
+                  customSnackbar(context, '近日公開...');
+                },
+                child: SvgPicture.asset('assets/Vector.svg')),
           ),
           const SizedBox(
             width: 10,

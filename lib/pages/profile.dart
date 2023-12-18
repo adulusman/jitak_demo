@@ -14,7 +14,7 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
         title: const Text('Profile'),
       ),
-      body: const Center(child: Text('Profile')),
+      body: const Center(child: Text('Profile メンテナンス中')),
     );
   }
 }

@@ -87,7 +87,11 @@ class _EditStoreState extends State<EditStore> {
           actions: [
             Stack(
               children: [
-                SvgPicture.asset('assets/bell.svg', height: 33),
+                GestureDetector(
+                    onTap: () {
+                      customSnackbar(context, '近日公開...');
+                    },
+                    child: SvgPicture.asset('assets/bell.svg', height: 33)),
                 const Positioned(
                   right: 0,
                   child: CircleAvatar(
