@@ -152,7 +152,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   MaterialButton(
                     onPressed: () {

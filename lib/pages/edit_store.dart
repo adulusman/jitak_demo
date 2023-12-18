@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jitak_non_getex/widgets/custom_checkbox.dart';
 import 'package:jitak_non_getex/widgets/custom_req.dart';
+import 'package:jitak_non_getex/widgets/custom_snackbar.dart';
 import 'package:jitak_non_getex/widgets/custom_txtfield.dart';
 import 'package:svg_flutter/svg.dart';
 
@@ -533,18 +534,23 @@ class _EditStoreState extends State<EditStore> {
               // CustomButton(label: '', onPressed: () {}, width: double.infinity)
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Container(
-                  height: 60,
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      gradient: LinearGradient(
-                          colors: [Color(0xffEE7D42), Color(0xffFFC8AB)])),
-                  child: const Center(
-                      child: Text(
-                    '編集を保存',
-                    style: TextStyle(color: Colors.white),
-                  )),
+                child: InkWell(
+                  onTap: () {
+                    customSnackbar(context, '近日公開...');
+                  },
+                  child: Container(
+                    height: 60,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        gradient: LinearGradient(
+                            colors: [Color(0xffEE7D42), Color(0xffFFC8AB)])),
+                    child: const Center(
+                        child: Text(
+                      '編集を保存',
+                      style: TextStyle(color: Colors.white),
+                    )),
+                  ),
                 ),
               ),
               const SizedBox(
