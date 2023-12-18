@@ -74,10 +74,10 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomAppBar(
         height: 86,
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   MaterialButton(
                     onPressed: () {
@@ -133,22 +133,27 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        '打刻する',
-                        style: TextStyle(
-                          color: currentTab == 3
-                              ? const Color(0xffFAAA14)
-                              : Colors.blueGrey,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      )
-                    ],
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    '打刻する',
+                    style: TextStyle(
+                      color: currentTab == 3
+                          ? const Color(0xffFAAA14)
+                          : Colors.blueGrey,
+                    ),
                   ),
+                  const SizedBox(
+                    height: 10,
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   MaterialButton(
                     onPressed: () {
                       setState(() {
@@ -204,7 +209,7 @@ class _HomeState extends State<Home> {
                     ),
                   )
                 ],
-              ),
+              )
             ]),
       ),
     );
