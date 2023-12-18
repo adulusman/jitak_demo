@@ -19,7 +19,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     super.initState();
-    // Initialize the Japanese locale data
+
     initializeDateFormatting('ja_JP');
   }
 
@@ -139,10 +139,10 @@ class _SearchPageState extends State<SearchPage> {
                       DateTime.now().add(Duration(days: index));
 
                   // Format the weekday and date in Japanese
-                  String formattedWeekday = DateFormat.E('ja_JP')
-                      .format(currentDate); // '木' for Thursday
+                  String formattedWeekday =
+                      DateFormat.E('ja_JP').format(currentDate);
                   String formattedDate =
-                      DateFormat.d('ja_JP').format(currentDate); // '26'
+                      DateFormat.d('ja_JP').format(currentDate).substring(0, 2);
 
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
