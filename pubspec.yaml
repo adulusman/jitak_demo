@@ -39,6 +39,7 @@ dependencies:
   ai_barcode_scanner: ^3.4.1
   google_maps_flutter: ^2.5.0
   dotted_border: ^2.1.0
+  intl: ^0.19.0
 
 
 dev_dependencies:

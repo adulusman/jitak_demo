@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:jitak_non_getex/pages/stamp_card.dart';
 import 'package:jitak_non_getex/widgets/custom_snackbar.dart';
 import 'package:svg_flutter/svg.dart';
@@ -13,6 +15,14 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   int currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the Japanese locale data
+    initializeDateFormatting('ja_JP');
+  }
+
   @override
   Widget build(BuildContext context) {
     var gap = SizedBox(
@@ -66,12 +76,74 @@ class _SearchPageState extends State<SearchPage> {
               )),
             ),
             gap,
+            // SizedBox(
+            //   width: MediaQuery.of(context).size.width * 0.9,
+            //   height: MediaQuery.of(context).size.height * 0.1,
+            //   child: ListView.builder(
+            //     scrollDirection: Axis.horizontal,
+            //     itemBuilder: (context, index) {
+            //       return Padding(
+            //         padding: const EdgeInsets.all(8.0),
+            //         child: GestureDetector(
+            //           onTap: () {
+            //             setState(() {
+            //               currentIndex = index;
+            //             });
+            //           },
+            //           child: Container(
+            //             decoration: BoxDecoration(
+            //                 color: currentIndex == index
+            //                     ? const Color(0xffFAAA14)
+            //                     : const Color(0xffFAFAFA),
+            //                 borderRadius: BorderRadius.circular(10)),
+            //             // height: MediaQuery.of(context).size.height * 0.01,
+            //             width: MediaQuery.of(context).size.width * 0.11,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: [
+            //                 Text(
+            //                   '木',
+            //                   style: TextStyle(
+            //                       color: currentIndex == index
+            //                           ? const Color(0xffffffff)
+            //                           : const Color(0xff303030),
+            //                       fontSize: 18,
+            //                       fontWeight: FontWeight.bold,
+            //                       fontFamily: 'Noto Sans JP'),
+            //                 ),
+            //                 Text(
+            //                   '26',
+            //                   style: TextStyle(
+            //                       color: currentIndex == index
+            //                           ? const Color(0xffffffff)
+            //                           : const Color(0xff303030),
+            //                       fontSize: 18,
+            //                       fontWeight: FontWeight.bold),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               height: MediaQuery.of(context).size.height * 0.1,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
+                  // Calculate the date for the current index
+                  DateTime currentDate =
+                      DateTime.now().add(Duration(days: index));
+
+                  // Format the weekday and date in Japanese
+                  String formattedWeekday = DateFormat.E('ja_JP')
+                      .format(currentDate); // '木' for Thursday
+                  String formattedDate =
+                      DateFormat.d('ja_JP').format(currentDate); // '26'
+
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
@@ -82,33 +154,35 @@ class _SearchPageState extends State<SearchPage> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: currentIndex == index
-                                ? const Color(0xffFAAA14)
-                                : const Color(0xffFAFAFA),
-                            borderRadius: BorderRadius.circular(10)),
-                        // height: MediaQuery.of(context).size.height * 0.01,
+                          color: currentIndex == index
+                              ? const Color(0xffFAAA14)
+                              : const Color(0xffFAFAFA),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                         width: MediaQuery.of(context).size.width * 0.11,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '木',
+                              formattedWeekday,
                               style: TextStyle(
-                                  color: currentIndex == index
-                                      ? const Color(0xffffffff)
-                                      : const Color(0xff303030),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'Noto Sans JP'),
+                                color: currentIndex == index
+                                    ? const Color(0xffffffff)
+                                    : const Color(0xff303030),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Noto Sans JP',
+                              ),
                             ),
                             Text(
-                              '26',
+                              formattedDate,
                               style: TextStyle(
-                                  color: currentIndex == index
-                                      ? const Color(0xffffffff)
-                                      : const Color(0xff303030),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold),
+                                color: currentIndex == index
+                                    ? const Color(0xffffffff)
+                                    : const Color(0xff303030),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ],
                         ),
@@ -118,6 +192,7 @@ class _SearchPageState extends State<SearchPage> {
                 },
               ),
             ),
+
             gap,
             Expanded(
               flex: 0,
