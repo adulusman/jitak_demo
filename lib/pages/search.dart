@@ -15,6 +15,7 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   int currentIndex = 0;
+  DateTime currentDate = DateTime.now();
 
   @override
   void initState() {
@@ -25,6 +26,8 @@ class _SearchPageState extends State<SearchPage> {
 
   @override
   Widget build(BuildContext context) {
+    String fetchDate =
+        "${currentDate.year}年 ${currentDate.month}月 ${currentDate.day}日（${_getWeekday(currentDate.weekday)}）";
     var gap = SizedBox(
       height: MediaQuery.of(context).size.height * 0.028,
     );
@@ -69,10 +72,11 @@ class _SearchPageState extends State<SearchPage> {
               decoration: const BoxDecoration(
                   gradient: LinearGradient(
                       colors: [Color(0xffFAAA14), Color(0xffFFD78D)])),
-              child: const Center(
+              child: Center(
                   child: Text(
-                '2022年 5月 26日（木）',
-                style: TextStyle(fontWeight: FontWeight.w500),
+                fetchDate,
+                // '2022年 5月 26日（木）',
+                style: const TextStyle(fontWeight: FontWeight.w500),
               )),
             ),
             gap,
@@ -383,5 +387,26 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
     );
+  }
+
+  String _getWeekday(int weekday) {
+    switch (weekday) {
+      case 1:
+        return '月';
+      case 2:
+        return '火';
+      case 3:
+        return '水';
+      case 4:
+        return '木';
+      case 5:
+        return '金';
+      case 6:
+        return '土';
+      case 7:
+        return '日';
+      default:
+        return '';
+    }
   }
 }
