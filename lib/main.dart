@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:jitak_non_getex/home.dart';
 
 void main() {
@@ -7,17 +6,17 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Jitak Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
-        // You can use Get.theme instead of ThemeData for theme changes
+        useMaterial3: true,
       ),
       home: const Home(),
     );

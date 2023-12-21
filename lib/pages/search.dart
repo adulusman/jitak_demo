@@ -15,7 +15,6 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   int currentIndex = 0;
-  DateTime currentDate = DateTime.now();
 
   @override
   void initState() {
@@ -25,7 +24,9 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
+    DateTime currentDate = DateTime.now();
     String fetchDate =
         "${currentDate.year}年 ${currentDate.month}月 ${currentDate.day}日（${_getWeekday(currentDate.weekday)}）";
     var gap = SizedBox(
@@ -34,6 +35,8 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       backgroundColor: const Color(0xffFAFAFA),
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
             child: const Center(
@@ -75,63 +78,10 @@ class _SearchPageState extends State<SearchPage> {
               child: Center(
                   child: Text(
                 fetchDate,
-                // '2022年 5月 26日（木）',
                 style: const TextStyle(fontWeight: FontWeight.w500),
               )),
             ),
             gap,
-            // SizedBox(
-            //   width: MediaQuery.of(context).size.width * 0.9,
-            //   height: MediaQuery.of(context).size.height * 0.1,
-            //   child: ListView.builder(
-            //     scrollDirection: Axis.horizontal,
-            //     itemBuilder: (context, index) {
-            //       return Padding(
-            //         padding: const EdgeInsets.all(8.0),
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             setState(() {
-            //               currentIndex = index;
-            //             });
-            //           },
-            //           child: Container(
-            //             decoration: BoxDecoration(
-            //                 color: currentIndex == index
-            //                     ? const Color(0xffFAAA14)
-            //                     : const Color(0xffFAFAFA),
-            //                 borderRadius: BorderRadius.circular(10)),
-            //             // height: MediaQuery.of(context).size.height * 0.01,
-            //             width: MediaQuery.of(context).size.width * 0.11,
-            //             child: Column(
-            //               mainAxisAlignment: MainAxisAlignment.center,
-            //               children: [
-            //                 Text(
-            //                   '木',
-            //                   style: TextStyle(
-            //                       color: currentIndex == index
-            //                           ? const Color(0xffffffff)
-            //                           : const Color(0xff303030),
-            //                       fontSize: 18,
-            //                       fontWeight: FontWeight.bold,
-            //                       fontFamily: 'Noto Sans JP'),
-            //                 ),
-            //                 Text(
-            //                   '26',
-            //                   style: TextStyle(
-            //                       color: currentIndex == index
-            //                           ? const Color(0xffffffff)
-            //                           : const Color(0xff303030),
-            //                       fontSize: 18,
-            //                       fontWeight: FontWeight.bold),
-            //                 ),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //       );
-            //     },
-            //   ),
-            // ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               height: MediaQuery.of(context).size.height * 0.1,
@@ -196,7 +146,6 @@ class _SearchPageState extends State<SearchPage> {
                 },
               ),
             ),
-
             gap,
             Expanded(
               flex: 0,
@@ -222,11 +171,11 @@ class _SearchPageState extends State<SearchPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.52,
+                              // height: MediaQuery.of(context).size.height * 0.52,
                               width: double.infinity,
                               child: Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.5,
+                                // height:
+                                // MediaQuery.of(context).size.height * 0.5,
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 decoration: BoxDecoration(
                                   color: const Color(0xffFFFFFF),
@@ -355,6 +304,9 @@ class _SearchPageState extends State<SearchPage> {
                                         ),
                                       ),
                                     ),
+                                    const SizedBox(
+                                      height: 20,
+                                    )
                                   ],
                                 ),
                               ),
